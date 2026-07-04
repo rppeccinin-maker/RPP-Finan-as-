@@ -1062,6 +1062,14 @@
     meses.forEach((n, i) => ms.innerHTML += `<option value="${i}" ${db.start_calc_month == i ? 'selected' : ''}>${n.toUpperCase()}</option>`);
     [2024, 2025, 2026, 2027].forEach(y => ys.innerHTML += `<option value="${y}" ${db.start_calc_year == y ? 'selected' : ''}>${y}</option>`);
     setupPinKeyboard(); recalcularTudo(); render();
+    // Registro do Service Worker para PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('SW registrado com sucesso!'))
+      .catch(err => console.log('Erro ao registrar SW:', err));
+  });
+}
 </script>
 </body>
 </html>
